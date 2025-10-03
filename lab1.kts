@@ -72,6 +72,38 @@ fun result(month : Int){
     }
 }
 
+fun getDay(num: Int): String{
+    if(num !in 0..6){
+        return "Valor ingresado no valido"
+    }
+    val weekDays = arrayOf("lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo");
+    return weekDays[num]
+}
+
+val weekDays = arrayOf("lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo");
+
+fun getDay(num: Int): String{
+    if(num !in 0..6){
+        return "Valor ingresado no valido"
+    }
+    
+    return weekDays[num]
+}
+
+fun forPorPosicion(){
+    for(posicion in weekDays.indices){
+        println("La posicion $posicion contiene el valor ${weekDays[posicion]}")
+    }
+}
+
+fun forPorPosicion_Valor(){
+    for((posicion, valor) in weekDays.withIndex()){
+        println("La posicion $posicion contiene el valor $valor")
+    }
+}
+
+
+
 fun main() {
     // Importante:
     // val -> declara constantes, inmutables, const, no puede ser re-asignadas
