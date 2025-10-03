@@ -102,6 +102,18 @@ fun forPorPosicion_Valor(){
     }
 }
 
+var mutableList: MutableList<String> = mutableListOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+fun runList(){
+    for (item in mutableList) {
+      print("$item ")
+  }
+}
+
+fun runListPosition(){
+    for ((indice, item) in mutableList.withIndex()) {
+      println("La posición $indice contiene $item")
+  }
+}
 
 
 fun main() {
@@ -212,5 +224,43 @@ fun main() {
     var result: Int = add(3, 10);
     println(result)
     
-    // -------------------------------- When --------------------------------- //
+    //---------------------------------------Lists----------------------------------------------//
+    // Mutables -> se pueden editar
+    // Inmutables -> son solo de lectura
+    
+    //---------------------------------------INMUTABLE Lists----------------------------------------------//
+	val mutableList: List<String> = listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
+    // Metodos comunes
+    println(mutableList.size) //Muestra el tamaño de la lista
+    println(mutableList.get(3)) //Devuelve el valor de la posición 3
+    println(mutableList.first()) //Devuelve el primer valor
+    println(mutableList.last()) //Devuelve el último valor
+    println(mutableList) //[Lunes, Martes, Miércoles, Jueves, Viernes, Sábado, Domingo]
+    
+    val a = mutableList.filter { it == "Lunes" || it == "Jueves" }
+    println(a)
+
+    //---------------------------------------MUTABLE Lists----------------------------------------------//
+	// Metodos
+    mutableList.add("domingo")
+    mutableList.add(0, "Semana: ")
+	println(mutableList)
+    
+    var mutableList2: MutableList<String> = mutableListOf()
+
+    mutableList2.none() //Nos devuelve un true si está vacía la lista
+    mutableList2.firstOrNull() //Nos devolverá el primer campo, y si no hay, un null.
+    mutableList2.elementAtOrNull(2) //El elemento del índice 2, si no hay, devolverá un null
+    mutableList2.lastOrNull() //Último valor de la lista o null
+	
+    runListPosition()
+   
+    val mutableList: MutableList<String> = mutableListOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+    val newListEmpty: MutableList<String> = mutableListOf()
+
+    mutableList.forEach {
+        newListEmpty.add(it+":")
+    }
+
+    print(newListEmpty)
 }
