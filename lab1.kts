@@ -1,3 +1,22 @@
+fun showMyName(){
+    println("Me llamo Yael");
+}
+
+fun showMyLastName(){
+    println("Mi apellido es Charles");
+}
+
+fun showMyAge(){
+    println("Tengo 20 años");
+}
+
+fun showMyInfo(name: String, lastName: String, age: Int){
+    println("Me llamo $name $lastName y tengo $age años")
+}
+
+fun add(first: Int, second: Int) : Int{
+    return first + second;
+}
 
 fun main() {
     // Importante:
@@ -100,4 +119,12 @@ fun main() {
     
     println("\nEjemplo de concatenacion más reciente")
     println("$introduction $firstNumber $plus ${secondNumber.toInt()} es: ${firstNumber + secondNumber.toInt()}")
+
+    //----------------------- funciones -----------------------------//
+    showMyInfo("Yael", "Charles Marin", 20)
+    
+    var result: Int = add(3, 10);
+    println(result)
+    
+    // -------------------------------- When --------------------------------- //
 }
