@@ -18,6 +18,60 @@ fun add(first: Int, second: Int) : Int{
     return first + second;
 }
 
+fun getMonth(month : Int){
+    when (month) {
+        1 -> print("Enero")
+        2 -> print("Febrero")
+        3 -> print("Marzo")
+        4 -> print("Abril")
+        5 -> print("Mayo")
+        6 -> print("Junio")
+        7 -> print("Julio")
+        8 -> print("Agosto")
+        9 -> print("Septiembre")
+        10 -> print("Octubre")
+        11 -> print("Noviembre")
+        12 -> print("Diciembre")
+        else -> {
+            print("No corresponde a ningún mes del año")
+        }
+    }
+}
+
+fun getMonth2(month : Int){
+    when (month) {
+        1,2,3 -> print("Primer trimestre del año")
+        4,5,6 -> print("segundo trimestre del año")
+        7,8,9 -> print("tercer trimestre del año")
+        10,11,12 -> print("cuarto trimestre del año")
+    }
+}
+
+fun getMonth3(month : Int){
+    when (month) {
+        in 1..6 -> print("Primer semestre")
+        in 7..12 -> print("segundo semestre")
+        !in 1..12 -> print("no es un mes válido")
+    }
+}
+
+fun result(value: Any){
+    when (value){
+        is Int -> print(value + 1)
+        is String -> print("El texto es $value")
+        is Boolean -> if (value) print("es verdadero") else print("es falso")
+    }
+}
+
+fun result(month : Int){
+    val response : String = when (month) {
+        in 1..6 -> "Primer semestre"
+        in 7..12 -> "segundo semestre"
+        !in 1..12 -> "no es un mes válido"
+        else ->  "error"
+    }
+}
+
 fun main() {
     // Importante:
     // val -> declara constantes, inmutables, const, no puede ser re-asignadas
