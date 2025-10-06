@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pokedexapp"
+    namespace = "com.app.pokedexapp"
     compileSdk = 36
 
     defaultConfig {

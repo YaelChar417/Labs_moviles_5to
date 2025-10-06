@@ -1,4 +1,4 @@
-package com.example.pokedexapp
+package com.app.pokedexapp
 
 import org.junit.Assert.*
 import org.junit.Test
