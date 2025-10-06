@@ -8,13 +8,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.app.pokedexapp.presentation.screens.detail.PokemonDetailScreen
+import com.app.pokedexapp.presentation.screens.home.HomeScreen
 
 sealed class Screen(
     val route: String,
 ) {
     object Home : Screen("home")
 
-    object Detail : Screen("pokemon/\{pokemonId\}") {
+    object Detail : Screen("pokemon/{pokemonId}") {
         fun createRoute(pokemonId: String) = "pokemon/$pokemonId"
     }
 }
