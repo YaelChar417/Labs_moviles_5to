@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Hilt
+    kotlin("kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -56,4 +59,16 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler) // procesador de anotaciones para kotlin
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Retrofit: API and http helper
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Coil: use async images like in URL's
+    implementation(libs.coil.compose)
 }
