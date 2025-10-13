@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.app.pokedexapp.presentation.navigation.PokemonNavGraph
 import com.app.pokedexapp.presentation.theme.PokedexAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    // todo: aqui va a haber un error
+                    PokemonNavGraph()
                 }
             }
         }

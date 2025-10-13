@@ -49,15 +49,15 @@ fun PokemonDetailScreen(
         ) {
             // Mock para el lab3
             AsyncImage(
-                model = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png",
-                contentDescription = "Pokemon $pokemonId",
+                model = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(pokemonId.toInt() + 1)}.png",
+                contentDescription = "Pokemon ${(pokemonId.toInt() + 1)}",
                 modifier = Modifier.size(200.dp),
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Pokemon #$pokemonId",
+                text = "Pokemon #${(pokemonId.toInt() + 1)}",
                 style = MaterialTheme.typography.headlineMedium,
             )
         }
