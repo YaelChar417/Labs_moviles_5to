@@ -20,6 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    // todo: aqui va a haber un error
                 }
             }
         }
