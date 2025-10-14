@@ -7,8 +7,8 @@ data class Pokemon(
     val weight: Int,
     val height: Int,
     val types: List<String>,
-){
-    companion object{
+) {
+    companion object {
         fun getMockData(): List<Pokemon> =
             listOf(
                 Pokemon(
@@ -53,5 +53,4 @@ data class Pokemon(
                 ),
             )
     }
-
 }
