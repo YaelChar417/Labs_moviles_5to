@@ -9,16 +9,16 @@ data class PokemonDto(
     @SerializedName("weight") val weight: Int,
     @SerializedName("sprites") val sprites: SpritesDto,
     @SerializedName("types") val types: List<TypeDto>,
-){
+) {
     data class SpritesDto(
-        @SerializedName("front_default") val frontDefault: String
+        @SerializedName("front_default") val frontDefault: String,
     )
 
     data class TypeDto(
-        @SerializedName("Type") val type: TypeInfoDto
-    ){
+        @SerializedName("Type") val type: TypeInfoDto,
+    ) {
         data class TypeInfoDto(
-            @SerializedName("name") val name: String
+            @SerializedName("name") val name: String,
         )
     }
 }
