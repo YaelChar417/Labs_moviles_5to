@@ -15,7 +15,7 @@ data class PokemonDto(
     )
 
     data class TypeDto(
-        @SerializedName("Type") val type: TypeInfoDto,
+        @SerializedName("type") val type: TypeInfoDto,
     ) {
         data class TypeInfoDto(
             @SerializedName("name") val name: String,
