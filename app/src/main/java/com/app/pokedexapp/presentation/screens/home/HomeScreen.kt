@@ -15,16 +15,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.app.pokedexapp.domain.model.Pokemon
+import com.app.pokedexapp.presentation.screens.home.components.PokemonListContent
 import com.app.pokedexapp.presentation.screens.home.components.PokemonListTab
 import com.app.pokedexapp.presentation.screens.home.components.SearchTab
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onPokemonClick: (String) -> Unit) {
+fun HomeScreen(
+    onPokemonClick: (String) -> Unit,
+    viewModel: HomeViewModel = hiltViewModel(),
+) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     val tabs = listOf("Pokemon List", "Search")
-    val mockPokemonList = remember { Pokemon.getMockData() }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
@@ -51,8 +57,10 @@ fun HomeScreen(onPokemonClick: (String) -> Unit) {
 
             when (selectedTabIndex) {
                 0 ->
-                    PokemonListTab(
-                        pokemonList = mockPokemonList,
+                    PokemonListContent(
+                        pokemonList = uiState.pokemonList,
+                        isLoading = uiState.isLoading,
+                        error = uiState.error,
                         onPokemonClick = onPokemonClick,
                     )
                 1 -> SearchTab(onPokemonClick = onPokemonClick)
