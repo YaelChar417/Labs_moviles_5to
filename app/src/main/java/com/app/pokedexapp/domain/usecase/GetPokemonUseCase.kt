@@ -7,24 +7,18 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetPokemonListUseCase
+class GetPokemonUseCase
     @Inject
     constructor(
-        private val repository: PokemonRepository, // Inyectado por Hilt
+        private val repository: PokemonRepository,
     ) {
-        operator fun invoke(): Flow<Result<List<Pokemon>>> =
+        operator fun invoke(id: String): Flow<Result<Pokemon>> =
             flow {
                 try {
-                    // Primer valor: Loading
                     emit(Result.Loading)
-
-                    // Obtiene datos
-                    val pokemonList = repository.getPokemonList()
-
-                    // Segundo valor: Success con datos
-                    emit(Result.Success(pokemonList))
+                    val pokemon = repository.getPokemonById(id)
+                    emit(Result.Success(pokemon))
                 } catch (e: Exception) {
-                    // O Error si algo falla
                     emit(Result.Error(e))
                 }
             }
