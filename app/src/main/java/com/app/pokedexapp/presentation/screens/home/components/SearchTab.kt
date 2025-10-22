@@ -142,7 +142,7 @@ fun SearchTab(
                     ) { pokemon ->
                         PokemonCard(
                             pokemon = pokemon,
-                            onClick = { onPokemonClick(pokemon.id)}
+                            onClick = { onPokemonClick(pokemon.id) },
                         )
                     }
                 }
