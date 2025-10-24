@@ -51,7 +51,7 @@ fun PokemonListContent(
                 ErrorView(
                     message = error,
                     onRetry = onRetry,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
                 )
             }
             else -> {

@@ -76,7 +76,7 @@ fun PokemonDetailScreen(
                 uiState.error != null -> {
                     ErrorView(
                         message = uiState.error ?: "Unknown error",
-                        onRetry = { viewModel.getPokemon(pokemonId)},
+                        onRetry = { viewModel.getPokemon(pokemonId) },
                         modifier = Modifier.align(Alignment.Center),
                     )
                 }
