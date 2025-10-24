@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.app.pokedexapp.domain.model.Pokemon
+import com.app.pokedexapp.presentation.common.components.ErrorView
 import com.app.pokedexapp.presentation.common.components.LoadingShimmer
 
 @Composable
@@ -25,6 +26,7 @@ fun PokemonListContent(
     isLoading: Boolean,
     error: String?,
     onPokemonClick: (String) -> Unit,
+    onRetry: () -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         when {
@@ -34,23 +36,22 @@ fun PokemonListContent(
                     contentPadding = PaddingValues(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
-
                 ) {
                     items(10) {
                         LoadingShimmer(
                             modifier =
                                 Modifier
                                     .fillMaxWidth()
-                                    .height(160.dp)
+                                    .height(160.dp),
                         )
                     }
                 }
             }
-            error != null -> {
-                Text(
-                    text = error,
-                    modifier = Modifier.align(Alignment.Center),
-                    color = MaterialTheme.colorScheme.error,
+            error != null && pokemonList.isEmpty() -> {
+                ErrorView(
+                    message = error,
+                    onRetry = onRetry,
+                    modifier = Modifier.align(Alignment.Center)
                 )
             }
             else -> {

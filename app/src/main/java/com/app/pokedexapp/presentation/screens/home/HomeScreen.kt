@@ -62,6 +62,7 @@ fun HomeScreen(
                         isLoading = uiState.isLoading,
                         error = uiState.error,
                         onPokemonClick = onPokemonClick,
+                        onRetry = { viewModel.loadPokemonList() }
                     )
                 1 -> SearchTab(onPokemonClick = onPokemonClick)
             }
