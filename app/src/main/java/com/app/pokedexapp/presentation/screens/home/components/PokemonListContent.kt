@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,6 +24,7 @@ import com.app.pokedexapp.domain.model.Pokemon
 import com.app.pokedexapp.presentation.common.components.ErrorView
 import com.app.pokedexapp.presentation.common.components.LoadingShimmer
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PokemonListContent(
     pokemonList: List<Pokemon>,
@@ -28,7 +33,18 @@ fun PokemonListContent(
     onPokemonClick: (String) -> Unit,
     onRetry: () -> Unit,
 ) {
-    Box(modifier = Modifier.fillMaxSize()) {
+    val pullRefreshState =
+        rememberPullRefreshState(
+            refreshing = isLoading,
+            onRefresh = onRetry,
+        )
+
+    Box(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .pullRefresh(pullRefreshState),
+    ) {
         when {
             isLoading -> {
                 LazyVerticalGrid(
@@ -73,5 +89,12 @@ fun PokemonListContent(
                 }
             }
         }
+
+        PullRefreshIndicator(
+            refreshing = isLoading,
+            state = pullRefreshState,
+            modifier = Modifier.align(Alignment.TopCenter),
+            scale = true,
+        )
     }
 }

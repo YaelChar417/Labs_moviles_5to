@@ -72,4 +72,7 @@ dependencies {
 
     // Coil: use async images like in URL's
     implementation(libs.coil.compose)
+
+    // Material pull to refresh
+    implementation(libs.androidx.material)
 }
